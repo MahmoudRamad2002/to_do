@@ -8,8 +8,8 @@ class myThemeData {
       scaffoldBackgroundColor: appColor.lightGreenColor,
       primaryColor: lightColor,
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
-        backgroundColor: lightColor,
-        selectedItemColor: appColor.GreenColor,
+        backgroundColor: Colors.white,
+        selectedItemColor: appColor.lightColor,
         unselectedItemColor: appColor.GryColor,
       ),
       textTheme: TextTheme(
