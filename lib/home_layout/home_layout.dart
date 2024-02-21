@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:to_do/Screens/login_in.dart';
 import 'package:to_do/Screens/settinScreen.dart';
 import 'package:to_do/Screens/taskScreen.dart';
 import 'package:to_do/Screens/widgets/show_add_task_button_sheet.dart';
-import 'package:to_do/shared/style/mt_them_data.dart';
+import 'package:to_do/provider/my_provider.dart';
+import 'package:to_do/shared/style/my_them_data.dart';
 
 class HomeLayout extends StatefulWidget {
   const HomeLayout({super.key});
@@ -18,10 +21,20 @@ class _HomeLayoutState extends State<HomeLayout> {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<MyProvider>(context);
     return Scaffold(
+      extendBody: true,
       appBar: AppBar(
+        actions: [
+          ElevatedButton(
+              onPressed: () {
+                provider.signOut();
+                Navigator.pushReplacementNamed(context, LoginScreen.routeName);
+              },
+              child: Icon(Icons.logout))
+        ],
         backgroundColor: myThemeData.lightColor,
-        title: Text('TODO APP',
+        title: Text('TODO APP ${provider.myuser?.name}',
             style: myThemeData.ligthTheme.textTheme.titleSmall),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -34,7 +47,7 @@ class _HomeLayoutState extends State<HomeLayout> {
           child: Icon(Icons.add)),
       bottomNavigationBar: BottomAppBar(
         notchMargin: 8,
-        clipBehavior: Clip.antiAlias,
+        // clipBehavior: Clip.antiAlias,
         color: Colors.white,
         shape: const CircularNotchedRectangle(),
         child: SingleChildScrollView(
@@ -48,8 +61,9 @@ class _HomeLayoutState extends State<HomeLayout> {
               setState(() {});
             },
             items: [
-              BottomNavigationBarItem(icon: Icon(Icons.list), label: ""),
-              BottomNavigationBarItem(icon: Icon(Icons.settings), label: "")
+              const BottomNavigationBarItem(icon: Icon(Icons.list), label: ""),
+              const BottomNavigationBarItem(
+                  icon: Icon(Icons.settings), label: "")
             ],
           ),
         ),

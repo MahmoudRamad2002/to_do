@@ -1,4 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:to_do/firebise/firebaseFunction.dart';
+import 'package:to_do/models/Task_module.dart';
 
 class showAddTaskButtonSheet extends StatefulWidget {
   @override
@@ -7,6 +11,9 @@ class showAddTaskButtonSheet extends StatefulWidget {
 
 class _showAddTaskButtonSheetState extends State<showAddTaskButtonSheet> {
   var formKey = GlobalKey<FormState>();
+  var titleController = TextEditingController();
+  var describitionController = TextEditingController();
+  DateTime selectedDateTime = DateUtils.dateOnly(DateTime.now());
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +26,11 @@ class _showAddTaskButtonSheetState extends State<showAddTaskButtonSheet> {
           key: formKey,
           child: SingleChildScrollView(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+              crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  'Add New Task',
+                  AppLocalizations.of(context)!.addtask,
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                       fontSize: 18,
@@ -34,17 +41,15 @@ class _showAddTaskButtonSheetState extends State<showAddTaskButtonSheet> {
                   height: 16,
                 ),
                 TextFormField(
-                  autovalidateMode: AutovalidateMode.always,
+                  controller: titleController,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'please enter task title';
-                    } else if (value.length != 10) {
-                      return ('please enter 10 or more characters');
                     }
                     return null;
                   },
                   decoration: InputDecoration(
-                      label: Text('Task title'),
+                      label: Text(AppLocalizations.of(context)!.title),
                       enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12),
                           borderSide: BorderSide(
@@ -58,15 +63,17 @@ class _showAddTaskButtonSheetState extends State<showAddTaskButtonSheet> {
                   height: 26,
                 ),
                 TextFormField(
+                  controller: describitionController,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'please enter data';
+                      return "Please Enter Task Description";
                     }
 
                     return null;
                   },
                   decoration: InputDecoration(
-                      label: Text('task describtion'),
+                      label:
+                          Text(AppLocalizations.of(context)!.taskdescription),
                       enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12),
                           borderSide: BorderSide(
@@ -79,14 +86,17 @@ class _showAddTaskButtonSheetState extends State<showAddTaskButtonSheet> {
                 SizedBox(
                   height: 26,
                 ),
-                Text(
-                  'task time',
-                  textAlign: TextAlign.start,
-                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                      ),
+                Container(
+                  width: double.infinity,
+                  child: Text(
+                    AppLocalizations.of(context)!.selecttime,
+                    textAlign: TextAlign.start,
+                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                  ),
                 ),
                 SizedBox(
                   height: 26,
@@ -98,8 +108,8 @@ class _showAddTaskButtonSheetState extends State<showAddTaskButtonSheet> {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      '12/12/2022',
-                      style: Theme.of(context).textTheme.bodySmall,
+                      selectedDateTime.toString().substring(0, 10),
+                      //style: Theme.of(context).textTheme.bodySmall,
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -110,14 +120,23 @@ class _showAddTaskButtonSheetState extends State<showAddTaskButtonSheet> {
                 ElevatedButton(
                   onPressed: () {
                     if (formKey.currentState!.validate()) {
-                      print('bj');
+                      // WidgetsBinding.instance.addPostFrameCallback;
+                      TaskModel task = TaskModel(
+                          title: titleController.text,
+                          date: selectedDateTime.millisecondsSinceEpoch,
+                          describition: describitionController.text,
+                          userId: FirebaseAuth.instance.currentUser?.uid,
+                          stutes: true);
+                      firebaseFunction.addTask(task).then((value) {
+                        Navigator.pop(context);
+                      });
                     }
                   },
                   style: ButtonStyle(
                       backgroundColor:
                           MaterialStatePropertyAll(Color(0xFF5D9CEC))),
                   child: Text(
-                    'Add Task',
+                    AppLocalizations.of(context)!.addtask,
                     style: Theme.of(context)
                         .textTheme
                         .bodyMedium!
@@ -132,12 +151,16 @@ class _showAddTaskButtonSheetState extends State<showAddTaskButtonSheet> {
     );
   }
 
-  void chooseTaskData(BuildContext context) {
-    showDatePicker(
+  void chooseTaskData(BuildContext context) async {
+    DateTime? choosenDateTime = await showDatePicker(
       context: context,
       initialDate: DateTime.now(),
       firstDate: DateTime.now(),
       lastDate: DateTime.now().add(Duration(days: 365)),
     );
+    if (choosenDateTime != null) {
+      selectedDateTime = DateUtils.dateOnly(choosenDateTime);
+      setState(() {});
+    }
   }
 }

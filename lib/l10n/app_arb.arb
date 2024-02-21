@@ -1,0 +1,20 @@
+{
+  "@@locale": "ar",
+  "todo": "انجاز المهام",
+  "edit": "تعديل",
+  "delete": "حذف",
+  "done": "تمت!",
+  "setting": "الاعدادات",
+  "title": "العنوان",
+  "task": "مهام",
+  "taskdescription": "وصف المهمه",
+  "selecttime": "اختر الوقت",
+  "addtask": "اضافة مهمه",
+  "somethingwentwrong": "هناك خطأ ما",
+  "tryagain": "حاول مجددا",
+  "notasks": "لايوجد مهام",
+  "updatetask": "تحديث المهمه",
+  "edittasktitle": "تعديل عنوان المهمه",
+  "edittaskdescription": "تعديل وصف المهمه",
+  "saved": "حفظ"
+}

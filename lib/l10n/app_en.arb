@@ -1,0 +1,19 @@
+{
+  "todo": "ToDo",
+  "edit": "Edit",
+  "delete": "Delete",
+  "done": "DONE!",
+  "setting": "Setting",
+  "title": "Title",
+  "task": "Task",
+  "taskdescription": "Task Description",
+  "selecttime": "Select Time",
+  "addtask": "Add Task",
+  "somethingwentwrong": "Something went wrong",
+  "tryagain": "try again",
+  "notasks": "No Tasks",
+  "updatetask": "Update Task",
+  "edittasktitle": "Edit Task title",
+  "edittaskdescription": "Edit Task Description",
+  "saved": "saved"
+}

@@ -8,7 +8,7 @@ class myThemeData {
       scaffoldBackgroundColor: appColor.lightGreenColor,
       primaryColor: lightColor,
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
-        backgroundColor: Colors.white,
+        backgroundColor: appColor.lightColor,
         selectedItemColor: appColor.lightColor,
         unselectedItemColor: appColor.GryColor,
       ),
@@ -19,15 +19,15 @@ class myThemeData {
             fontSize: 18,
             fontWeight: FontWeight.bold,
             color: appColor.lightColor),
-        bodySmall: GoogleFonts.roboto(
-          color: Colors.black54,
-          fontSize: 12,
-          fontWeight: FontWeight.normal,
-        ),
         bodyMedium: GoogleFonts.roboto(
           color: Colors.black,
           fontSize: 15,
           fontWeight: FontWeight.bold,
+        ),
+        bodySmall: GoogleFonts.roboto(
+          color: Colors.black54,
+          fontSize: 12,
+          fontWeight: FontWeight.normal,
         ),
       ));
 }
