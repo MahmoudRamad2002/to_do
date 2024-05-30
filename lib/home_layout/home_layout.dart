@@ -8,8 +8,6 @@ import 'package:to_do/provider/my_provider.dart';
 import 'package:to_do/shared/style/my_them_data.dart';
 
 class HomeLayout extends StatefulWidget {
-  const HomeLayout({super.key});
-
   static const String routeName = 'home';
 
   @override
@@ -69,10 +67,6 @@ class _HomeLayoutState extends State<HomeLayout> {
         ),
       ),
       body: tabs[index],
-      //
-      //
-      //
-      //
     );
   }
 

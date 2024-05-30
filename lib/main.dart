@@ -7,6 +7,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:to_do/Screens/login_in.dart';
+import 'package:to_do/Screens/settinScreen.dart';
 import 'package:to_do/Screens/sign_up_screen.dart';
 import 'package:to_do/Screens/update_screen.dart';
 import 'package:to_do/firebise/firebaseFunction.dart';
@@ -54,7 +55,7 @@ class MyApp extends StatelessWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      locale: Locale('ar'),
+      locale: Locale(provider.languageCode),
       supportedLocales: [
         Locale('en'),
         Locale('ar'),
@@ -63,7 +64,7 @@ class MyApp extends StatelessWidget {
       theme: myThemeData.ligthTheme,
       debugShowCheckedModeBanner: false,
       initialRoute: provider.firebaseUser != null
-          ? HomeLayout.routeName
+          ? SplashScreen.routeName
           : LoginScreen.routeName,
       routes: {
         SplashScreen.routeName: (context) => SplashScreen(),
@@ -71,6 +72,7 @@ class MyApp extends StatelessWidget {
         UpdateScreen.routeName: (context) => UpdateScreen(),
         LoginScreen.routeName: (context) => LoginScreen(),
         SignUpScreen.routeName: (context) => SignUpScreen(),
+        SettingScreen.routeName: (context) => SettingScreen(),
       },
     );
   }

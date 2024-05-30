@@ -3,7 +3,8 @@ class TaskModel {
   String? title = '';
   String? describition = '';
   String? userId;
-  bool stutes = false;
+  bool stutes;
+
   int date;
 
   TaskModel(

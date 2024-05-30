@@ -87,15 +87,23 @@ class TaskWidget extends StatelessWidget {
                       AppLocalizations.of(context)!.done,
                       style: TextStyle(color: appColor.GreenColor),
                     )
-                  : Container(
-                      padding: EdgeInsets.only(
-                          right: 20, left: 20, bottom: 5, top: 5),
-                      margin: EdgeInsets.only(right: 10),
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).primaryColor,
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Icon(Icons.done, color: Colors.white, size: 30),
+                  : InkWell(
+                      onTap: () {
+                        taskModel.stutes = true;
+                        firebaseFunction.updateTask(taskModel.id, taskModel);
+                      },
+                      child: Container(
+                          margin: const EdgeInsets.only(right: 12),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 18, vertical: 2),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12),
+                              color: Theme.of(context).primaryColor),
+                          child: Icon(
+                            Icons.done,
+                            size: 30,
+                            color: Colors.white,
+                          )),
                     )
             ],
           ),

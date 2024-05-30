@@ -6,6 +6,7 @@ import 'package:to_do/models/user-module.dart';
 class MyProvider extends ChangeNotifier {
   UserModel? myuser;
   User? firebaseUser;
+  String languageCode = 'en';
 
   MyProvider() {
     firebaseUser = FirebaseAuth.instance.currentUser;
@@ -23,6 +24,11 @@ class MyProvider extends ChangeNotifier {
 
   void signOut() {
     FirebaseAuth.instance.signOut();
+    notifyListeners();
+  }
+
+  void changeLangauge(String lang) {
+    languageCode = lang;
     notifyListeners();
   }
 }

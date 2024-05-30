@@ -125,8 +125,8 @@ class _showAddTaskButtonSheetState extends State<showAddTaskButtonSheet> {
                           title: titleController.text,
                           date: selectedDateTime.millisecondsSinceEpoch,
                           describition: describitionController.text,
-                          userId: FirebaseAuth.instance.currentUser?.uid,
-                          stutes: true);
+                          userId: FirebaseAuth.instance.currentUser!.uid,
+                          stutes: false);
                       firebaseFunction.addTask(task).then((value) {
                         Navigator.pop(context);
                       });
@@ -154,7 +154,7 @@ class _showAddTaskButtonSheetState extends State<showAddTaskButtonSheet> {
   void chooseTaskData(BuildContext context) async {
     DateTime? choosenDateTime = await showDatePicker(
       context: context,
-      initialDate: DateTime.now(),
+      initialDate: selectedDateTime,
       firstDate: DateTime.now(),
       lastDate: DateTime.now().add(Duration(days: 365)),
     );
