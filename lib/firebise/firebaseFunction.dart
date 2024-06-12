@@ -110,22 +110,20 @@ class firebaseFunction {
     }
   }
 
-  static void getUserLogin(String emailAddress, String password,
-      Function UserNotFoundit, Function getUser) async {
-    try {
-      var credential = await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: emailAddress, password: password);
-      readUser(credential.user!.uid).then((value) {
-        getUser(value);
-      });
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        UserNotFoundit();
-        //print('No user found for that email.');
-      } else if (e.code == 'wrong-password') {
-        UserNotFoundit();
-      }
-    }
-  }
+// static void getUserLogin(String emailAddress, String password, Function UserNotFoundit, Function getUser) async {
+//   try {
+//     var credential = await FirebaseAuth.instance
+//         .signInWithEmailAndPassword(email: emailAddress, password: password);
+//     readUser(credential.user!.uid).then((value) {
+//       getUser(value);
+//     });
+//   } on FirebaseAuthException catch (e) {
+//     if (e.code == 'user-not-found') {
+//       // UserNotFoundit(e.message);
+//       //print('No user found for that email.');
+//     } else if (e.code == 'wrong-password') {
+//       // UserNotFoundit(e.message);
+//     }
+//   }
+// }
 }
-
