@@ -6,8 +6,8 @@ class LoginViewModel extends BaseViewModel<LoginNavigator> {
   void getUserLogin(String emailAddress, String password) async {
     try {
       connector!.showLoading("");
-      final credential = await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: emailAddress, password: password);
+      /* final credential = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: emailAddress, password: password);*/
       connector!.hideDialog();
       connector!.goToHome();
     } on FirebaseAuthException catch (e) {

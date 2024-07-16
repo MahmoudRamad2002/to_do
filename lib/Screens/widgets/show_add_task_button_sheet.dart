@@ -4,12 +4,14 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:to_do/firebise/firebaseFunction.dart';
 import 'package:to_do/models/Task_module.dart';
 
-class showAddTaskButtonSheet extends StatefulWidget {
+class ShowAddTaskButtonSheet extends StatefulWidget {
+  const ShowAddTaskButtonSheet({super.key});
+
   @override
-  State<showAddTaskButtonSheet> createState() => _showAddTaskButtonSheetState();
+  State<ShowAddTaskButtonSheet> createState() => _ShowAddTaskButtonSheetState();
 }
 
-class _showAddTaskButtonSheetState extends State<showAddTaskButtonSheet> {
+class _ShowAddTaskButtonSheetState extends State<ShowAddTaskButtonSheet> {
   var formKey = GlobalKey<FormState>();
   var titleController = TextEditingController();
   var describitionController = TextEditingController();
@@ -21,7 +23,7 @@ class _showAddTaskButtonSheetState extends State<showAddTaskButtonSheet> {
       padding:
           EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
       child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 12),
+        margin: const EdgeInsets.symmetric(horizontal: 12),
         child: Form(
           key: formKey,
           child: SingleChildScrollView(
@@ -37,7 +39,7 @@ class _showAddTaskButtonSheetState extends State<showAddTaskButtonSheet> {
                       fontWeight: FontWeight.bold,
                       color: Colors.black),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 16,
                 ),
                 TextFormField(
@@ -59,7 +61,7 @@ class _showAddTaskButtonSheetState extends State<showAddTaskButtonSheet> {
                           borderSide: BorderSide(
                               color: Theme.of(context).primaryColor))),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 26,
                 ),
                 TextFormField(
@@ -83,7 +85,7 @@ class _showAddTaskButtonSheetState extends State<showAddTaskButtonSheet> {
                           borderSide: BorderSide(
                               color: Theme.of(context).primaryColor))),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 26,
                 ),
                 Container(
@@ -98,7 +100,7 @@ class _showAddTaskButtonSheetState extends State<showAddTaskButtonSheet> {
                         ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 26,
                 ),
                 InkWell(
@@ -114,7 +116,7 @@ class _showAddTaskButtonSheetState extends State<showAddTaskButtonSheet> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 26,
                 ),
                 ElevatedButton(
@@ -132,9 +134,10 @@ class _showAddTaskButtonSheetState extends State<showAddTaskButtonSheet> {
                       });
                     }
                   },
-                  style: ButtonStyle(
+                  style: const ButtonStyle(
                       backgroundColor:
-                          MaterialStatePropertyAll(Color(0xFF5D9CEC))),
+                          // MaterialStatePropertyAll
+                          WidgetStatePropertyAll(Color(0xFF5D9CEC))),
                   child: Text(
                     AppLocalizations.of(context)!.addtask,
                     style: Theme.of(context)
@@ -156,7 +159,7 @@ class _showAddTaskButtonSheetState extends State<showAddTaskButtonSheet> {
       context: context,
       initialDate: selectedDateTime,
       firstDate: DateTime.now(),
-      lastDate: DateTime.now().add(Duration(days: 365)),
+      lastDate: DateTime.now().add(const Duration(days: 365)),
     );
     if (choosenDateTime != null) {
       selectedDateTime = DateUtils.dateOnly(choosenDateTime);

@@ -5,6 +5,7 @@ import 'package:to_do/home_layout/home_layout.dart';
 
 class SignUpScreen extends StatefulWidget {
   static const String routeName = 'singUp';
+  const SignUpScreen({super.key});
 
   @override
   State<SignUpScreen> createState() => _SignUpScreenState();
@@ -31,7 +32,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             fit: BoxFit.cover,
             width: double.infinity,
           ),
-          SizedBox(
+          const SizedBox(
             height: 14,
           ),
           Padding(
@@ -50,25 +51,27 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       return null;
                     },
                     decoration: InputDecoration(
-                        label: Text("Name"),
+                        label: const Text("Name"),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12),
-                            borderSide: BorderSide(color: Colors.blueAccent)),
+                            borderSide:
+                                const BorderSide(color: Colors.blueAccent)),
                         enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12),
-                            borderSide: BorderSide(color: Colors.blueAccent))),
+                            borderSide:
+                                const BorderSide(color: Colors.blueAccent))),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 14,
                   ),
                   TextFormField(
                     controller: emailController,
                     validator: (value) {
                       bool emailValid = RegExp(
-                              r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                              r"^[a-zA-Z0-9.a-zA-Z0-9!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                           .hasMatch(value!);
 
-                      if (value == null || value.isEmpty) {
+                      if (value.isEmpty) {
                         return 'please enter Email';
                       } else if (!emailValid) {
                         return 'Please enter valid email';
@@ -76,15 +79,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       return null;
                     },
                     decoration: InputDecoration(
-                        label: Text("Email Address"),
+                        label: const Text("Email Address"),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12),
-                            borderSide: BorderSide(color: Colors.blueAccent)),
+                            borderSide:
+                                const BorderSide(color: Colors.blueAccent)),
                         enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12),
-                            borderSide: BorderSide(color: Colors.blueAccent))),
+                            borderSide:
+                                const BorderSide(color: Colors.blueAccent))),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 14,
                   ),
                   TextFormField(
@@ -97,15 +102,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       return null;
                     },
                     decoration: InputDecoration(
-                        label: Text("Age"),
+                        label: const Text("Age"),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12),
-                            borderSide: BorderSide(color: Colors.blueAccent)),
+                            borderSide:
+                                const BorderSide(color: Colors.blueAccent)),
                         enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12),
-                            borderSide: BorderSide(color: Colors.blueAccent))),
+                            borderSide:
+                                const BorderSide(color: Colors.blueAccent))),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 16,
                   ),
                   TextFormField(
@@ -120,21 +127,23 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     },
                     obscureText: true,
                     decoration: InputDecoration(
-                        label: Text("Password"),
+                        label: const Text("Password"),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12),
-                            borderSide: BorderSide(color: Colors.blueAccent)),
+                            borderSide:
+                                const BorderSide(color: Colors.blueAccent)),
                         enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12),
-                            borderSide: BorderSide(color: Colors.blueAccent))),
+                            borderSide:
+                                const BorderSide(color: Colors.blueAccent))),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 16,
                   ),
                   ElevatedButton(
-                      style: ButtonStyle(
+                      style: const ButtonStyle(
                           backgroundColor:
-                              MaterialStatePropertyAll(Color(0xFF5D9CEC))),
+                              WidgetStatePropertyAll(Color(0xFF5D9CEC))),
                       onPressed: () {
                         if (formKey.currentState!.validate()) {
                           firebaseFunction.creatAuthantionEmail(
@@ -147,8 +156,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           });
                         }
                       },
-                      child: Text('Sing Up')),
-                  SizedBox(
+                      child: const Text('Sing Up')),
+                  const SizedBox(
                     height: 16,
                   ),
                   InkWell(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:to_do/Screens/login/login_navigator.dart';
 import 'package:to_do/Screens/login/login_view_model.dart';
@@ -8,6 +9,8 @@ import 'package:to_do/home_layout/home_layout.dart';
 
 class LoginScreen extends StatefulWidget {
   static String routeName = 'login';
+
+  const LoginScreen({super.key});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -35,7 +38,7 @@ class _LoginScreenState extends BaseView<LoginViewModel, LoginScreen>
                 fit: BoxFit.cover,
                 width: double.infinity,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 14,
               ),
               Padding(
@@ -51,7 +54,7 @@ class _LoginScreenState extends BaseView<LoginViewModel, LoginScreen>
                             Row(
                               children: [
                                 Text(
-                                  'Wellcome Back!',
+                                  AppLocalizations.of(context)!.wellcomeBack,
                                   style: Theme.of(context)
                                       .textTheme
                                       .bodyLarge!
@@ -61,17 +64,19 @@ class _LoginScreenState extends BaseView<LoginViewModel, LoginScreen>
                                 )
                               ],
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 14,
                             ),
                             TextFormField(
                               controller: userController,
                               validator: (value) {
                                 bool emailValid = RegExp(
-                                        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                                        r"^[a-zA-Z0-9.a-zA-Z0-9!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                                     .hasMatch(value!);
 
-                                if (value == null || value.isEmpty) {
+                                if (
+                                    //value == null ||
+                                    value.isEmpty) {
                                   return 'please enter username';
                                 } else if (!emailValid) {
                                   return 'please enter valid username';
@@ -79,17 +84,19 @@ class _LoginScreenState extends BaseView<LoginViewModel, LoginScreen>
                                 return null;
                               },
                               decoration: InputDecoration(
-                                  label: Text("Username"),
+                                  label: const Text(
+                                      //AppLocalizations.of(context)!.
+                                      "Username"),
                                   border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(12),
-                                      borderSide:
-                                          BorderSide(color: Colors.blueAccent)),
+                                      borderSide: const BorderSide(
+                                          color: Colors.blueAccent)),
                                   enabledBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(12),
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                           color: Colors.blueAccent))),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 16,
                             ),
                             TextFormField(
@@ -104,22 +111,25 @@ class _LoginScreenState extends BaseView<LoginViewModel, LoginScreen>
                               },
                               obscureText: true,
                               decoration: InputDecoration(
-                                  label: Text("Password"),
+                                  label: const Text(
+                                      //AppLocalizations.of(context)!.
+                                      "Password"),
                                   border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(12),
-                                      borderSide:
-                                          BorderSide(color: Colors.blueAccent)),
+                                      borderSide: const BorderSide(
+                                          color: Colors.blueAccent)),
                                   enabledBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(12),
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                           color: Colors.blueAccent))),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 20,
                             ),
                             ElevatedButton(
-                                style: ButtonStyle(
-                                    backgroundColor: MaterialStatePropertyAll(
+                                style: const ButtonStyle(
+                                    //MaterialStatePropertyAll
+                                    backgroundColor: WidgetStatePropertyAll(
                                         Color(0xFF5D9CEC))),
                                 onPressed: () {
                                   if (formKey.currentState!.validate()) {
@@ -137,8 +147,10 @@ class _LoginScreenState extends BaseView<LoginViewModel, LoginScreen>
                                     // });
                                   }
                                 },
-                                child: Text('login')),
-                            SizedBox(
+                                child: const Text(
+                                    //AppLocalizations.of(context)!.
+                                    'login')),
+                            const SizedBox(
                               height: 16,
                             ),
                             InkWell(
@@ -150,6 +162,7 @@ class _LoginScreenState extends BaseView<LoginViewModel, LoginScreen>
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
+                                    //AppLocalizations.of(context)!.
                                     'Dont have an account?  ',
                                     style: Theme.of(context)
                                         .textTheme
@@ -158,7 +171,9 @@ class _LoginScreenState extends BaseView<LoginViewModel, LoginScreen>
                                             fontSize: 14,
                                             color: Colors.black54),
                                   ),
-                                  Text('create accounte',
+                                  Text(
+                                      //AppLocalizations.of(context)!.
+                                      'create accounte',
                                       style: Theme.of(context)
                                           .textTheme
                                           .bodyLarge!

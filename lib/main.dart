@@ -49,14 +49,14 @@ class MyApp extends StatelessWidget {
     var provider = Provider.of<MyProvider>(context);
     return MaterialApp(
       title: 'Localizations Sample App',
-      localizationsDelegates: [
+      localizationsDelegates: const [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
       locale: Locale(provider.languageCode),
-      supportedLocales: [
+      supportedLocales: const [
         Locale('en'),
         Locale('ar'),
       ],
@@ -67,11 +67,11 @@ class MyApp extends StatelessWidget {
           ? SplashScreen.routeName
           : LoginScreen.routeName,
       routes: {
-        SplashScreen.routeName: (context) => SplashScreen(),
-        HomeLayout.routeName: (context) => HomeLayout(),
-        UpdateScreen.routeName: (context) => UpdateScreen(),
-        LoginScreen.routeName: (context) => LoginScreen(),
-        SignUpScreen.routeName: (context) => SignUpScreen(),
+        SplashScreen.routeName: (context) => const SplashScreen(),
+        HomeLayout.routeName: (context) => const HomeLayout(),
+        UpdateScreen.routeName: (context) => const UpdateScreen(),
+        LoginScreen.routeName: (context) => const LoginScreen(),
+        SignUpScreen.routeName: (context) => const SignUpScreen(),
         SettingScreen.routeName: (context) => SettingScreen(),
       },
     );

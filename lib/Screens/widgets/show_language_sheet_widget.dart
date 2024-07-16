@@ -4,6 +4,8 @@ import 'package:to_do/provider/my_provider.dart';
 import 'package:to_do/shared/style/app_color.dart';
 
 class ShowLanguageSheetWidget extends StatelessWidget {
+  const ShowLanguageSheetWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<MyProvider>(context);
@@ -25,27 +27,25 @@ class ShowLanguageSheetWidget extends StatelessWidget {
                           color: provider.languageCode == "en"
                               ? appColor.lightColor
                               : Colors.black54)),
-                  Spacer(),
-                  Container(
-                    child: Icon(Icons.done,
-                        color: provider.languageCode == "en"
-                            ? appColor.lightColor
-                            : Colors.black54),
-                  ),
+                  const Spacer(),
+                  Icon(Icons.done,
+                      color: provider.languageCode == "en"
+                          ? appColor.lightColor
+                          : Colors.black54),
                 ],
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
-          Divider(
+          const Divider(
             thickness: 3,
             indent: 34,
             endIndent: 34,
             color: appColor.lightColor,
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Padding(
@@ -64,13 +64,11 @@ class ShowLanguageSheetWidget extends StatelessWidget {
                             ? appColor.lightColor
                             : Colors.black54),
                   ),
-                  Spacer(),
-                  Container(
-                    child: Icon(Icons.done,
-                        color: provider.languageCode != "en"
-                            ? appColor.lightColor
-                            : Colors.black54),
-                  )
+                  const Spacer(),
+                  Icon(Icons.done,
+                      color: provider.languageCode != "en"
+                          ? appColor.lightColor
+                          : Colors.black54)
                 ],
               ),
             ),

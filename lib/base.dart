@@ -9,7 +9,7 @@ abstract class BaseNavigator {
 }
 
 class BaseViewModel<NAV extends BaseNavigator> extends ChangeNotifier {
-  NAV? connector = null;
+  NAV? connector;
 }
 
 abstract class BaseView<VM extends BaseViewModel, ST extends StatefulWidget>
@@ -35,7 +35,7 @@ abstract class BaseView<VM extends BaseViewModel, ST extends StatefulWidget>
   showLoading(message) {
     showDialog(
       context: context,
-      builder: (context) => Center(
+      builder: (context) => const Center(
         child: CircularProgressIndicator(),
       ),
     );
@@ -47,14 +47,14 @@ abstract class BaseView<VM extends BaseViewModel, ST extends StatefulWidget>
       context: context,
       barrierDismissible: false,
       builder: (context) => AlertDialog(
-        title: Text('Error'),
+        title: const Text('Error'),
         actions: [
           ElevatedButton(
               onPressed: () {
                 Navigator.pop(context);
                 setState(() {});
               },
-              child: Text('OK!'))
+              child: const Text('OK!'))
         ],
         content: Text(message),
       ),

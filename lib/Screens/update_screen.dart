@@ -6,6 +6,7 @@ import 'package:to_do/shared/style/my_them_data.dart';
 
 class UpdateScreen extends StatefulWidget {
   static const String routeName = 'update';
+  const UpdateScreen({super.key});
 
   @override
   State<UpdateScreen> createState() => _UpdateScreenState();
@@ -39,7 +40,7 @@ class _UpdateScreenState extends State<UpdateScreen> {
             style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                 fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black),
           ),
-          SizedBox(
+          const SizedBox(
             height: 16,
           ),
           TextFormField(
@@ -61,7 +62,7 @@ class _UpdateScreenState extends State<UpdateScreen> {
                     borderSide:
                         BorderSide(color: Theme.of(context).primaryColor))),
           ),
-          SizedBox(
+          const SizedBox(
             height: 26,
           ),
           TextFormField(
@@ -84,7 +85,7 @@ class _UpdateScreenState extends State<UpdateScreen> {
                     borderSide:
                         BorderSide(color: Theme.of(context).primaryColor))),
           ),
-          SizedBox(
+          const SizedBox(
             height: 26,
           ),
           Container(
@@ -99,7 +100,7 @@ class _UpdateScreenState extends State<UpdateScreen> {
                   ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 26,
           ),
           InkWell(
@@ -115,7 +116,7 @@ class _UpdateScreenState extends State<UpdateScreen> {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 26,
           ),
           ElevatedButton(
@@ -132,8 +133,8 @@ class _UpdateScreenState extends State<UpdateScreen> {
                   .bodyMedium!
                   .copyWith(color: Colors.white),
             ),
-            style: ButtonStyle(
-                backgroundColor: MaterialStatePropertyAll(Color(0xFF5D9CEC))),
+            style: const ButtonStyle(
+                backgroundColor: WidgetStatePropertyAll(Color(0xFF5D9CEC))),
           )
         ],
       ),
@@ -145,7 +146,7 @@ class _UpdateScreenState extends State<UpdateScreen> {
       context: context,
       initialDate: selectedDateTime,
       firstDate: selectedDateTime,
-      lastDate: DateTime.now().add(Duration(days: 365)),
+      lastDate: DateTime.now().add(const Duration(days: 365)),
     );
     if (choosenDateTime != null) {
       selectedDateTime = DateUtils.dateOnly(choosenDateTime);

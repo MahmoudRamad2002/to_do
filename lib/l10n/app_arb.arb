@@ -16,5 +16,9 @@
   "updatetask": "تحديث المهمه",
   "edittasktitle": "تعديل عنوان المهمه",
   "edittaskdescription": "تعديل وصف المهمه",
-  "saved": "حفظ"
+  "saved": "حفظ",
+  "langauge": "لغه",
+  "themeMode": "الثمه",
+  "light": "فاتح",
+  "wellcomeBack": "مرحبا بالعوده!"
 }

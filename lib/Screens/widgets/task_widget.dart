@@ -8,7 +8,6 @@ import 'package:to_do/shared/style/app_color.dart';
 
 class TaskWidget extends StatelessWidget {
   TaskModel taskModel;
-
   TaskWidget(this.taskModel);
 
   @override
@@ -57,7 +56,7 @@ class TaskWidget extends StatelessWidget {
                 ),
               ),
               Container(
-                padding: EdgeInsets.only(left: 7),
+                padding: const EdgeInsets.only(left: 7),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -71,7 +70,7 @@ class TaskWidget extends StatelessWidget {
                               .copyWith(color: appColor.GreenColor)
                           : Theme.of(context).textTheme.bodyMedium,
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 8,
                     ),
                     Text(
@@ -84,8 +83,8 @@ class TaskWidget extends StatelessWidget {
               const Spacer(),
               taskModel.stutes
                   ? Text(
-                      AppLocalizations.of(context)!.done,
-                      style: TextStyle(color: appColor.GreenColor),
+                AppLocalizations.of(context)!.done,
+                      style: const TextStyle(color: appColor.GreenColor),
                     )
                   : InkWell(
                       onTap: () {
@@ -99,7 +98,7 @@ class TaskWidget extends StatelessWidget {
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(12),
                               color: Theme.of(context).primaryColor),
-                          child: Icon(
+                          child: const Icon(
                             Icons.done,
                             size: 30,
                             color: Colors.white,

@@ -15,5 +15,9 @@
   "updatetask": "Update Task",
   "edittasktitle": "Edit Task title",
   "edittaskdescription": "Edit Task Description",
-  "saved": "saved"
+  "saved": "saved",
+  "langauge": "langauge",
+  "themeMode": "ThemeMode",
+  "light": "light",
+  "wellcomeBack": "Well comeBack"
 }

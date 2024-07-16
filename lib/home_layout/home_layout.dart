@@ -9,6 +9,7 @@ import 'package:to_do/shared/style/my_them_data.dart';
 
 class HomeLayout extends StatefulWidget {
   static const String routeName = 'home';
+  const HomeLayout({super.key});
 
   @override
   State<HomeLayout> createState() => _HomeLayoutState();
@@ -29,10 +30,14 @@ class _HomeLayoutState extends State<HomeLayout> {
                 provider.signOut();
                 Navigator.pushReplacementNamed(context, LoginScreen.routeName);
               },
-              child: Icon(Icons.logout))
+              child: const Icon(Icons.logout))
         ],
         backgroundColor: myThemeData.lightColor,
-        title: Text('TODO APP ${provider.myuser?.name}',
+        title: Text(
+            'TODO APP '
+            // ${provider.myuser?.name
+            // }',
+            ,
             style: myThemeData.ligthTheme.textTheme.titleSmall),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -41,8 +46,9 @@ class _HomeLayoutState extends State<HomeLayout> {
           onPressed: () {
             showAddTaskSheet();
           },
-          shape: StadiumBorder(side: BorderSide(color: Colors.white, width: 3)),
-          child: Icon(Icons.add)),
+          shape: const StadiumBorder(
+              side: BorderSide(color: Colors.white, width: 3)),
+          child: const Icon(Icons.add)),
       bottomNavigationBar: BottomAppBar(
         notchMargin: 8,
         // clipBehavior: Clip.antiAlias,
@@ -58,10 +64,9 @@ class _HomeLayoutState extends State<HomeLayout> {
               index = value;
               setState(() {});
             },
-            items: [
-              const BottomNavigationBarItem(icon: Icon(Icons.list), label: ""),
-              const BottomNavigationBarItem(
-                  icon: Icon(Icons.settings), label: "")
+            items: const [
+              BottomNavigationBarItem(icon: Icon(Icons.list), label: ""),
+              BottomNavigationBarItem(icon: Icon(Icons.settings), label: "")
             ],
           ),
         ),
@@ -77,7 +82,7 @@ class _HomeLayoutState extends State<HomeLayout> {
       context: context,
       isScrollControlled: true,
       builder: (context) {
-        return showAddTaskButtonSheet();
+        return ShowAddTaskButtonSheet();
       },
     );
   }

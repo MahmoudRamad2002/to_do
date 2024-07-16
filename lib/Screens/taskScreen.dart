@@ -2,12 +2,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:to_do/Screens/widgets/TaskWidget.dart';
+import 'package:to_do/Screens/widgets/task_widget.dart';
 import 'package:to_do/firebise/firebaseFunction.dart';
 
 import '../models/Task_module.dart';
 
 class TaskScreen extends StatefulWidget {
+  const TaskScreen({super.key});
+
   @override
   State<TaskScreen> createState() => _TaskScreenState();
 }
@@ -25,24 +27,24 @@ class _TaskScreenState extends State<TaskScreen> {
           selectionColor: Theme.of(context).primaryColor,
           selectedTextColor: Colors.white,
           height: 100,
-          dateTextStyle: TextStyle(fontSize: 10),
-          dayTextStyle: TextStyle(fontSize: 10),
-          monthTextStyle: TextStyle(fontSize: 10),
-          onDateChange: (Newdate) {
+          dateTextStyle: const TextStyle(fontSize: 10),
+          dayTextStyle: const TextStyle(fontSize: 10),
+          monthTextStyle: const TextStyle(fontSize: 10),
+          onDateChange: (newdate) {
             // New date selected
             setState(() {
-              date = Newdate;
+              date = newdate;
             });
           },
         ),
-        SizedBox(
+        const SizedBox(
           height: 18,
         ),
         StreamBuilder<QuerySnapshot<TaskModel>>(
           stream: firebaseFunction.getTaskfromFirestore(date),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return Center(child: CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator());
             }
             if (snapshot.hasError) {
               return Column(
@@ -64,7 +66,7 @@ class _TaskScreenState extends State<TaskScreen> {
                   itemBuilder: (context, index) {
                     return TaskWidget(tasksList[index]);
                   },
-                  separatorBuilder: (context, index) => SizedBox(
+                  separatorBuilder: (context, index) => const SizedBox(
                         height: 10,
                       ),
                   itemCount: tasksList.length),
